@@ -51,7 +51,7 @@ Se inpecionar o bottao ele vai de display none para display bloc onde fiz de man
 
 usando um jQuery que ja e implementado dentro do bootstrap
 
-
+## 7. Utilizando dom para o Modal
 
 
 
