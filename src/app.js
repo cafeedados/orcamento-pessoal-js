@@ -54,6 +54,34 @@ class BD {
 
     }
 
+    recuperarTodosRegistros(){
+
+    let despesas = []; //criando um array de despesas
+
+       let id = localStorage.getItem('id'); 
+       
+       /**
+        * para cada item recuperado do id partindo de um
+        * ira incrementar ate quando a variavel i for menor ou igual ao id.
+        */
+       for(let i = 1; i<= id; i++){
+
+        //recuperar a despesa onvertendo o json para um objeto literal
+        let despesa =  JSON.parse(localStorage.getItem(i))
+
+        //verificar se existem indices pulados ou removidos
+        if (despesa === null){
+            continue
+        }
+
+        despesas.push(despesa)
+        
+
+       }
+     
+       return despesas;
+    }
+
 
 }
 
@@ -91,6 +119,15 @@ function cadastrarDespesa() {
         document.getElementById('modal_botao').className = 'btn btn-success';
         document.getElementById('modal_divTitulo').className = 'modal-header text-success';
 
+
+        //limpando os campos
+        document.getElementById('ano').value = '';
+        document.getElementById('mes').value = '';
+        document.getElementById('dia').value = '';
+        document.getElementById('tipo').value = '';
+        document.getElementById('descricao').value = '';
+        document.getElementById('valor').value = '';
+
         $('#modalRegistroDespesas').modal('show')
         console.log('dados validos')
     } else {
@@ -108,11 +145,55 @@ function cadastrarDespesa() {
         console.log('Dados invalodos')
 
     }
-
-
-
-
 }
 
+
+
+
+ //sempre que o evendo onload carregar no body do html consulta
+function carregaListaDespesas(){
+
+    let despesas = [];
+
+    despesas =  bd.recuperarTodosRegistros()
+
+    console.log(despesas)
+     
+    //selecionando elemento tbody
+    let listaDespesas = document.getElementById('listas_despesas')
+
+    //percorrer o array despesas, listando cada despesas dinamica
+
+    despesas.forEach(function(d){
+        console.log(d)
+
+         //criando linhas (tr)
+         let linha = listaDespesas.insertRow()
+
+         //criar as colunas {td}
+         linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`
+         
+         //ajustar o tipo ja que ele chega como um numero
+         switch(parseInt(d.tipo)){
+             case 1: d.tipo = 'Alimentacao'
+                break
+            case 2: d.tipo = 'Educacao'
+                break
+            case 3: d.tipo = 'Lazer'
+                break
+            case 4: d.tipo = 'Saude'
+                break
+            case 5: d.tipo = 'Transporte'
+                break
+         }
+         linha.insertCell(1).innerHTML = d.tipo;
+
+         linha.insertCell(2).innerHTML = d.descricao;
+         linha.insertCell(3).innerHTML = d.valor;
+    })
+
+   
+
+}
 
 

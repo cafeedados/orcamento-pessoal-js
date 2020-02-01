@@ -54,7 +54,9 @@ usando um jQuery que ja e implementado dentro do bootstrap
 ## 7. Utilizando dom para o Modal
 
 
+## 8. Listando as despesas na pagina consulta
 
+Com a funcao Carrega Lista Despesas
 
 
 

@@ -25,3 +25,5 @@
 **6. Implementando da validacao dos dados antes do regristro dessa informacao**
 
 **7. Utilizando dom para o Modal**
+
+**8. Listando as despesas na pagina consulta**
