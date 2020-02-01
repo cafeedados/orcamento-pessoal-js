@@ -16,6 +16,17 @@
 
 ## Imagens do Projeto
 
+**Tela de Regristo**
+<img src="/docs/img/tela-cadastro-despesas.png">
+
+**Tela de Lista de Despesas**
+<img src="/docs/img/tela-lista-despesas.png">
+
+
+**Imagem de Sucesso no preeenchimento**
+<img src="/docs/img/tela-alerta-sucesso.png">
+
+**Imagem de erro no preenchimento**
 <img src="/docs/img/tela-alerta-erro.png">
 
 ## Etapas do Desenvolvimento
