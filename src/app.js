@@ -82,6 +82,48 @@ class BD {
        return despesas;
     }
 
+    pesquisar(despesa) {
+
+        let despesasFiltradas = []
+        despesasFiltradas = this.recuperarTodosRegistros();
+
+
+        /*metodo gilter nao atua no array original para atualizar o array original devemos
+         sobrepor o array original com a info atualizada
+         */
+        //ano
+        if(despesa.ano != ''){
+         despesasFiltradas = despesasFiltradas.filter(d => d.ano == despesa.ano) 
+
+        }
+        
+        //mes
+        if(despesa.mes != ''){
+            despesasFiltradas = despesasFiltradas.filter(d => d.mes == despesa.mes)
+   
+        }
+
+        //dia
+        if(despesa.dia != ''){
+            despesasFiltradas = despesasFiltradas.filter(d => d.dia == despesa.dia)
+   
+        }
+
+        //tipo
+        if(despesa.tipo != ''){
+            despesasFiltradas = despesasFiltradas.filter(d => d.tipo == despesa.tipo)
+   
+        }
+        
+        //descricao
+        if(despesa.descricao != ''){
+            despesasFiltradas = despesasFiltradas.filter(d => d.descricao == despesa.descricao)
+   
+        }
+
+        console.log(despesasFiltradas)
+    }
+
 
 }
 
@@ -196,4 +238,20 @@ function carregaListaDespesas(){
 
 }
 
+
+function pesquisarDespesa(){
+    console.log('teste')
+    let ano = document.getElementById('ano').value;
+    let mes = document.getElementById('mes').value;
+    let dia = document.getElementById('dia').value;
+    let tipo = document.getElementById('tipo').value;
+    let descricao = document.getElementById('descricao').value;
+    let valor = document.getElementById('valor').value;
+    
+    let despesa = new Despesas(ano, mes, dia, tipo, descricao, valor)
+
+    bd.pesquisar(despesa);
+
+   
+}
 

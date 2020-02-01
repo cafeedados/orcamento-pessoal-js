@@ -27,3 +27,7 @@
 **7. Utilizando dom para o Modal**
 
 **8. Listando as despesas na pagina consulta**
+
+**9. Filtrando as despesas**
+
+**10. Inserino as Despesas**

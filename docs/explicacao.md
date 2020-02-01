@@ -58,8 +58,9 @@ usando um jQuery que ja e implementado dentro do bootstrap
 
 Com a funcao Carrega Lista Despesas
 
+## 9. Filtrando as despesas
 
-
+## 10. Inserino as Despesas
 
 
 
@@ -113,3 +114,52 @@ Lembrando que no JSON precisamos encapsular as Strings internamente tambem.
 No caso de comunicacoes com aplicacoes externas ou com servidores, precisamos criar um protocolo de comunicacao, e nesse protocolo precisamos transitar os dados, porem objetos literais eles nao podem ser transitados nesse processo, isso porque eles sao objetos e esses objetos existem apenas na instancia da aplicacao. logo precisamos de alguma forma transofrmar esse objeto numa notacao de texto que e o caso da notacao jeson, para que esse texto seja anexada a essa comunicacao que sera feita, seja com o proprio backend da aplicacao web ou com outras aplicacoes.
 
 apartir da biblioteca JSON nativa do JS convertamos os objetos em notacao json com o ```JSON.stringify()```.  E o inverso  podemos converter o contrario, usando a lib ```JSON.parce()``` que converte o json em JS
+
+
+### ARRAY FILTER
+
+```JS
+
+let funcionarios = [{nome: 'Fernanda', cargo: 'Analista de RH', salario: 3100, status: 'Ativo'}, {nome: 'Miguel', cargo: 'Analista Administrativo', salario: 1700, status: 'Ativo'}, {nome: 'Rosa', cargo: 'Auxiliar de contabilidade', salario: 1600, status: 'Intativo'}, {nome: 'Roberto', cargo: 'Desenvolvedor PHP', salario: 4400, status: 'Ativo'}, {nome: 'Maria', cargo: 'Engenheira Mecanica', salario: 7500, status: 'Ativo'}]
+
+```
+
+ou seja utilizar o mentodo filter que espera sempre uma funcao de callback, funciona de maneira analoga ao forEach, ele vai percorrer os indices, recuperando o valor de determinado indice.
+
+```JS
+funcionarios.filter(function(f) { return true })
+
+// se o retorno for true ele ira retornar o array inteiro
+// se o retorno for false siginifica que para aquele determinado indice o retorno nao atendeu ao criterio
+
+
+```
+
+podemos colocar uma logica se aquele valor x deve ou nao retonar no filet 
+
+```JS
+funcionarios.filter(function(f) { return f.salario < 2000 })
+
+```
+
+para saber se aquele determinado objego se ele atende o requisito ou seja true our false
+
+podemos tambem combinar os filtros
+
+```JS
+funcionarios.filter(function(f) { return f.salario < 2000 }).filter(function(f){ return f.status == 'ativo'})
+
+```
+E podemos melhorar a sintaxe do codigo usando arrow functions como faremos sempre
+
+```JS
+
+funcionario.filter(f => f.salario < 2000)filter(f => f.salario < 2000)
+
+/**
+ * 
+ * Como esatmos recebendo um unico paramentro omiti os pareteses e como se trata de uma unica expressa
+ * podemos utilizar o recurso de retorno implicito.
+ * */
+
+```
