@@ -34,7 +34,11 @@ function gravar(d){
 
 ```
 
+## 5. Desenvolvendo Indices Dinamicos
 
+1.  Criar uma classe chamada BD que vai permitir Instanciar um objeto para lidar com o banco de dados (local Storage)
+
+Porque indices dinamicos, pois se nao mudarmos como no codigo acima o indice e despesas sempre que salvarmos vai ter sobreposicao porem quando aleteramos para algo dinamico ajuda que seja salvo esses arquivos
 
 
 
@@ -65,3 +69,37 @@ Os navegadores modernos em geral, tem recursos de armazenamento de dados em gera
 **- Cookies:** Funcionam como dados que sao armazenados no lado do cliente portanto no browser. E sempre que existe uma requizicao HTTP, ou seja sempre que acessamos determinada pagina os cookies sao anexados a essa requisicao, de forma que o servidor possa extrair esse cookie, analisar e trabalhar a sua logica com base nas informacoes cadastradas no lado do cliente, e apos esse processamento fazer o retorno da requizicao solicitada pelo cliente.
 
 Antes do HTML5 usamos muito o recurso de Cookies, mas apos a criacao dele os browsers em geral passaram a incorporar outros locais de armazenamento de dados.
+
+
+### EXPLICANDO SOBRE NOTACAO JSON
+
+Como objetos literais e notacao JSON causam certa confusao por se parecer muito, porem sao usados em conceitos totalmente diferentes. 
+
+Objeto Literal
+
+```JavaScript
+
+let produto = {
+    categoria: 'Eletrodomestico',
+    descricao: 'Geladeira',
+    preco: 1999.00,
+}
+
+```
+
+JSON  - (lembrando que json e uma string)
+
+```JS
+
+let produto JSON = '{ "categoria": "Eletrodomestico", "descricao" : "Geladeira", "preco" : "1999.00"}'
+
+
+
+```
+
+Lembrando que no JSON precisamos encapsular as Strings internamente tambem.
+
+
+No caso de comunicacoes com aplicacoes externas ou com servidores, precisamos criar um protocolo de comunicacao, e nesse protocolo precisamos transitar os dados, porem objetos literais eles nao podem ser transitados nesse processo, isso porque eles sao objetos e esses objetos existem apenas na instancia da aplicacao. logo precisamos de alguma forma transofrmar esse objeto numa notacao de texto que e o caso da notacao jeson, para que esse texto seja anexada a essa comunicacao que sera feita, seja com o proprio backend da aplicacao web ou com outras aplicacoes.
+
+apartir da biblioteca JSON nativa do JS convertamos os objetos em notacao json com o ```JSON.stringify()```.  E o inverso  podemos converter o contrario, usando a lib ```JSON.parce()``` que converte o json em JS

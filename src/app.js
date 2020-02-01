@@ -8,8 +8,43 @@ class Despesas {
         this.valor = valor;
     }
 
+};
+
+class BD {
+
+    constructor(){
+        let id = localStorage.getItem('id')
+
+        if(id === null){
+            localStorage.setItem('id',0)
+            //passando que o id comeca em zero
+        } 
+
+    }
+
+    getProximoID(){
+        let proximoID = localStorage.getItem('id')
+        //getitem serve para pegar
+        
+        return  parseInt(proximoID) + 1 //retornar o valor
+       
+    }
+
+    gravar(d){
+       
+        //setitem serve para armazenar 
+        let id = this.getProximoID(); //chamando com this pq e um obejto do proprio objteo
+        
+        localStorage.setItem(id, JSON.stringify(d))
+
+        localStorage.setItem('id', id)
+       
+    }
+
+
 }
 
+let bd = new BD()
 
 
 
@@ -30,21 +65,10 @@ function cadastrarDespesa(){
     valor.value 
     );
 
-    gravar(despesas)
+    //onde chama a funcao gravar, vamos chamar o objeto e executrar o objeto despesa
+    bd.gravar(despesas)
   
 }
 
 
 
-/**
- * 
- * No local storage temos o setitem que permite passar dois parametros, o primeiro 
- * parametro e a identificacao do objeto que vamos armazenar, e o segundo e o dado que
- * queremos armazenar. Sendo que esse dado ele precisa ser encaminhado com uma notacao JSON
- * e como estamos trabalhando com objetos literais devemos converter ele para uma notacao JSON
- * para converter podemos usar o objeto nativo do JS chamado JSON 
- */
-
-function gravar(d){
-    localStorage.setItem('despesa', JSON.stringify(d)) //como colocamos o setItem sempre que preencher ele ira sobreescrever o item anterior
-}
