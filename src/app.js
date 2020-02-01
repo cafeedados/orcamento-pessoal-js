@@ -121,7 +121,7 @@ class BD {
    
         }
 
-        console.log(despesasFiltradas)
+        return despesasFiltradas
     }
 
 
@@ -193,16 +193,20 @@ function cadastrarDespesa() {
 
 
  //sempre que o evendo onload carregar no body do html consulta
-function carregaListaDespesas(){
+function carregaListaDespesas(despesas = [], filtro = false){ //filtro = a false significa que nao e um filtro valido
+     
+    //ou seja se nao tiver nada no carregamento ele carrega todas as despesas
+    if(despesas.length == 0 && filtro == false){ 
+        despesas =  bd.recuperarTodosRegistros()
 
-    let despesas = [];
+    } // se nao for igual a zero significa que o array despesas possui valor 
+    // e que esses valores deverao ser mostrados
 
-    despesas =  bd.recuperarTodosRegistros()
-
-    console.log(despesas)
+   
      
     //selecionando elemento tbody
     let listaDespesas = document.getElementById('listas_despesas')
+    listaDespesas.innerHTML = ''
 
     //percorrer o array despesas, listando cada despesas dinamica
 
@@ -250,7 +254,9 @@ function pesquisarDespesa(){
     
     let despesa = new Despesas(ano, mes, dia, tipo, descricao, valor)
 
-    bd.pesquisar(despesa);
+    let despesas =  bd.pesquisar(despesa);
+    
+   this.carregaListaDespesas(despesas, true) //indicando que o parametro e verdadeiro para enviar para funcao
 
    
 }
