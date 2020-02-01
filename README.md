@@ -21,3 +21,5 @@
 **4. Realizar a integracao com o Local Storage**
 
 **5. Desenvolvendo Indices Dinamicos**
+
+**6. Implementando da validacao dos dados antes do regristro dessa informacao**

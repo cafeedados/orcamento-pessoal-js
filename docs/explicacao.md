@@ -41,7 +41,15 @@ function gravar(d){
 Porque indices dinamicos, pois se nao mudarmos como no codigo acima o indice e despesas sempre que salvarmos vai ter sobreposicao porem quando aleteramos para algo dinamico ajuda que seja salvo esses arquivos
 
 
+## 6. Implementando da validacao dos dados antes do regristro dessa informacao
 
+usando um dilog do bootstrap
+
+https://getbootstrap.com/docs/4.0/components/modal/
+
+Se inpecionar o bottao ele vai de display none para display bloc onde fiz de maneira programatica acontecer
+
+usando um jQuery que ja e implementado dentro do bootstrap
 
 
 

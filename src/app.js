@@ -8,6 +8,19 @@ class Despesas {
         this.valor = valor;
     }
 
+    validarDados(){
+        for(let i in this){
+            //vai recuperar os atributos [] como fosse a notacao ponto exemplo i.ano
+            if(this[i] == undefined || this[i] == '' || this[i] == null){
+                return false;
+                
+        }
+
+    }
+    return true;
+
+    }
+
 };
 
 class BD {
@@ -64,9 +77,20 @@ function cadastrarDespesa(){
     descricao.value,   
     valor.value 
     );
+    
+    if(despesas.validarDados()){
+        //dialog de sucesso
+        //onde chama a funcao gravar, vamos chamar o objeto e executrar o objeto despesa
+      bd.gravar(despesas)
+      $('#sucessoGravacao').modal('show')
+      console.log('dados validos')
+    } else {
+        //dialog de erro
+        $('#erroGravacao').modal('show')
+        console.log('Dados invalodos')
 
-    //onde chama a funcao gravar, vamos chamar o objeto e executrar o objeto despesa
-    bd.gravar(despesas)
+    }
+    
   
 }
 
