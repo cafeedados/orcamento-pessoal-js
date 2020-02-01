@@ -74,7 +74,8 @@ class BD {
             continue
         }
 
-        despesas.push(despesa)
+        despesa.id = i;
+        despesas.push(despesa);
         
 
        }
@@ -122,6 +123,10 @@ class BD {
         }
 
         return despesasFiltradas
+    }
+
+    remover(id){
+        localStorage.removeItem(id)
     }
 
 
@@ -211,7 +216,7 @@ function carregaListaDespesas(despesas = [], filtro = false){ //filtro = a false
     //percorrer o array despesas, listando cada despesas dinamica
 
     despesas.forEach(function(d){
-        console.log(d)
+     
 
          //criando linhas (tr)
          let linha = listaDespesas.insertRow()
@@ -236,6 +241,26 @@ function carregaListaDespesas(despesas = [], filtro = false){ //filtro = a false
 
          linha.insertCell(2).innerHTML = d.descricao;
          linha.insertCell(3).innerHTML = d.valor;
+
+         //criar o botao de exclusao:
+
+         let btn = document.createElement("button");
+         btn.className = 'btn btn-danger'
+         btn.innerHTML = '<i class="fas fa-times"></i>' //font awesome site de icones e etc
+         btn.id = `id_despesa_${d.id}`; //concatenando para poder evitar dar conflito na criacao
+         //associar uma acao ao botao
+         btn.onclick = function(){
+             //recuperar o IR precisamos remover o id despesa
+             
+             let id = this.id.replace('id_despesa_', '')
+
+             bd.remover(id) //chamando o metodo remover
+
+            window.location.reload() //atualizar a pagina
+         }
+         linha.insertCell(4).append(btn);
+
+         console.log(d)
     })
 
    

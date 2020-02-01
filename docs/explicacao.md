@@ -62,8 +62,15 @@ Com a funcao Carrega Lista Despesas
 
 ## 10. Inserino as Despesas
 
+## 11. Excluindo Despesas
+
+usando o icone do font awesome
+
+primeira coisa para exclusao devemos ver os valores ou seja os atributos de cada objeto que representam despesas no momento que sao criados como elemento tbody,
+ou seja precisamos incluir nas despesas uma maneira de ser linkada Key das despesas para fazer a excluisao.
 
 
+como o i no for do recuperar todos os registros, que corre incrementando ate achar o o valor semelhante ao id <=  ou seja podemos recuperar o id associando esse atributo o valor de i, utilizado para recuperar o documento em questao.
 
 ### Explicacao Sobre Web Storage
 
