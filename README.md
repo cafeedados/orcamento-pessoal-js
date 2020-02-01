@@ -16,7 +16,7 @@
 
 ## Imagens do Projeto
 
-<img src="/orcamento-pessoal-js/blob/master/docs/img/tela-alerta-erro.png">
+<img src="orcamento-pessoal-js/blob/master/docs/img/tela-alerta-erro.png">
 
 ## Etapas do Desenvolvimento
 
